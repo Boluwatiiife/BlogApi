@@ -21,61 +21,42 @@ Both authenticated and unauthenticated users can view published blogs, while blo
 ### Blogs have the following fields:
 
 - title (unique, required)
-
 - description
-
 - author
-
 - state (draft or published)
-
 - read_count (increments each time it’s read)
-
 - reading_time (calculated using blog body length)
-
 - tags
-
 - body (required)
-
 - timestamp (date created)
 
 ### Unauthenticated & Authenticated users:
 
 - Can view published blogs (paginated).
-
 - Can search blogs by author, title, tags.
-
 - Can order blogs by read_count, reading_time, timestamp.
-
 - Can view a single published blog (read_count increases by 1).
 
 ### Authenticated users:
 
 - Can create a blog (defaults to draft state).
-
 - Can update their blogs (draft or published).
-
 - Can publish a blog (change state from draft → published).
-
 - Can delete their blogs (draft or published).
-
 - Can view only their blogs, filterable by state.
 
 ## 🛠️ Tech Stack
 
 - Node.js + Express → Backend framework
-
 - MongoDB (Mongoose ODM) → Database
-
 - JWT (JSON Web Token) → Authentication
-
 - bcrypt → Password hashing
-
 - dotenv → Environment variable management
-
 - Jest / Supertest → Testing
 
 ### 📂 Project Structure
 
+```text
 blogging-api/
 │── src/
 │ ├── config/
@@ -97,11 +78,12 @@ blogging-api/
 │ ├── app.js
 │ └── server.js
 │
-│── tests/  
-│── .env  
+│── tests/
+│── .env
 │── .gitignore
 │── package.json
 │── README.md
+```
 
 ### ⚙️ Installation & Setup
 
@@ -122,11 +104,8 @@ JWT_SECRET=your_secret_key
 JWT_EXPIRES_IN=1h
 
 - Run the server
-
 - npm run dev
-
 - Run tests
-
 - npm test
 
 ## 🔑 API Endpoints
@@ -139,7 +118,7 @@ JWT_EXPIRES_IN=1h
 ### 📖 Blogs
 
 - GET /api/blogs => Get all published blogs (paginated, searchable, orderable) // _authorization not required_
-- GET /api/blogs/:id => Get a single published blog (increments read_count) _authorization not required_
+- GET /api/blogs/:id => Get a single published blog (increments read*count) \_authorization not required*
 - POST /api/blogs => Create a new blog (defaults to draft)
   _authorization required_
 - PATCH /api/blogs/:id => Update blog (only owner)
@@ -178,11 +157,8 @@ reading_time = Math.ceil(words / 200)
 **Covers:**
 
 - User signup & login
-
 - Authentication with JWT
-
 - Blog CRUD operations
-
 - Pagination, filtering & ordering
 
 **Run tests:**
@@ -192,7 +168,5 @@ reading_time = Math.ceil(words / 200)
 ## ✨ Future Improvements
 
 - Add role-based access control (admin, user).
-
 - Enable image uploads for blogs.
-
 - Add comments & likes feature.
